@@ -6,17 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class toGameScene : MonoBehaviour
 {
-    Button _bt;
+    [SerializeField] AudioSource _pushSound;
     [SerializeField] Image fadeImage;
     public float fadeDuration = 1.0f;
     void Start()
     {
-        _bt = GetComponent<Button>();
-        _bt.onClick.AddListener(call);
-    }
-    void call()
-    {
-        StartCoroutine(ChangeScene());
+        
     }
     IEnumerator ChangeScene()
     {
@@ -28,11 +23,16 @@ public class toGameScene : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        SceneManager.LoadScene("Config");
+        _pushSound.Play();
+        SceneManager.LoadScene("");
         fadeImage.enabled = false;
     }
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) ||
+            Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            StartCoroutine(ChangeScene());
+        }
     }
 }
