@@ -2163,7 +2163,7 @@ GameObject:
   - component: {fileID: 1941715044}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2251,6 +2251,7 @@ MonoBehaviour:
   _jumpPower: 8
   _dashSpeed: 2
   _gravityDrag: 0.99
+  _damageTimer: 0
 --- !u!50 &1941715041
 Rigidbody2D:
   serializedVersion: 4
@@ -2264,7 +2265,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
