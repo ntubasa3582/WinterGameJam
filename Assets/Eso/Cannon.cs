@@ -26,7 +26,7 @@ public class Cannon : MonoBehaviour
         GameObject shotObj = Instantiate(bullet, SHOT_POSITION.transform.position, Quaternion.identity);
         Rigidbody2D rb = shotObj.GetComponent<Rigidbody2D>();
 
-        rb.velocity = this.transform.up * bullespeed;
+        rb.velocity = this.transform.right * bullespeed;
         shotObj.transform.eulerAngles = this.transform.eulerAngles + new Vector3(0, 0, 0);
     }
 }
