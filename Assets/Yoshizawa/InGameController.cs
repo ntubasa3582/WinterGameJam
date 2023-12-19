@@ -12,6 +12,7 @@ public class InGameController : MonoBehaviour
     public bool IsPause { get; set; } = false;
     public bool IsGameClear { get; set; } = false;
     public bool IsGameOver { get; set; } = false;
+    public bool IsPlayerWakeUp { get; private set; } = false;
 
     [SerializeField] private KeyCode _switchKey = KeyCode.None;
     [SerializeField] private Image _panel = null;
@@ -31,8 +32,30 @@ public class InGameController : MonoBehaviour
 
     private void Update()
     {
+
         GameFinish();
     }
+
+    private void PlayerWakeUp()
+    {
+        if (Input.GetKeyDown(_switchKey))
+        {
+            IsPlayerWakeUp = true;
+        }
+
+        if (IsPlayerWakeUp)
+        {
+            
+        }
+    }
+
+    //private float _timer = 0.0f;
+    //private bool IsSpendInterval(float interval, float addTime, bool isStop = false)
+    //{
+    //    _timer += addTime;
+
+    //    if(_timer > interval) 
+    //}
 
     private void GameFinish()
     {
