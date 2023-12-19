@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        //_anim = GetComponent<Animator>();
-        //_sprite = GetComponent<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -67,18 +67,16 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        //// キャラクターの左右の向きを制御する
-        //if (_h != 0)
-        //{
-        //    _sprite.flipX = (_h < 0);
-        //}
+        // キャラクターの左右の向きを制御する
+        if (_h != 0)
+        {
+            _sprite.flipX = (_h < 0);
+        }
 
-        //// アニメーションを制御する
-        //if (_anim)
-        //{
-        //    _anim.SetFloat("SpeedX", Mathf.Abs(_rb.velocity.x));
-        //    _anim.SetFloat("SpeedY", _rb.velocity.y);
-        //    _anim.SetBool("IsGrounded", _isGrounded);
-        //}
+        // アニメーションを制御する
+        if (_anim)
+        {
+            _anim.SetFloat("SpeedX", Mathf.Abs(_rb.velocity.x));
+        }
     }
 }
