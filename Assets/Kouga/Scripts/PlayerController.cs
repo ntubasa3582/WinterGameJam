@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _gravityDrag = .99f;
     Rigidbody2D _rb = default;
     bool _isGrounded = false;
+    bool _isDamaged = false;
     Animator _anim = default;
     SpriteRenderer _sprite = default;
     float _h;
+    [SerializeField] float _damageTimer = 0;
 
     void Start()
     {
@@ -36,6 +38,15 @@ public class PlayerController : MonoBehaviour
             // 上昇中にジャンプボタンを離したら上昇を減速する
             velocity.y *= _gravityDrag;
         }
+        if(_isDamaged)
+        {
+            _damageTimer += Time.deltaTime;
+            if(_damageTimer > 5)
+            {
+                _isDamaged = false;
+                _damageTimer = 0;
+            }
+        }
 
         _rb.velocity = velocity;
     }
@@ -49,6 +60,13 @@ public class PlayerController : MonoBehaviour
         else
         {
             _rb.AddForce(Vector2.right * _h * _moveSpeed * _dashSpeed);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy" && !_isDamaged)
+        {
+            _isDamaged = true;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -77,6 +95,7 @@ public class PlayerController : MonoBehaviour
         if (_anim)
         {
             _anim.SetFloat("SpeedX", Mathf.Abs(_rb.velocity.x));
+            _anim.SetBool("Damaged", _isDamaged);
         }
     }
 }
