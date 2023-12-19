@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
         if (_anim)
         {
             _anim.SetFloat("SpeedX", Mathf.Abs(_rb.velocity.x));
+            _anim.SetBool("IsGrounded", _isGrounded);
             _anim.SetBool("Damaged", _isDamaged);
         }
     }
