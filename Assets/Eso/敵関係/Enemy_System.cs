@@ -12,6 +12,7 @@ public class Enemy_System : MonoBehaviour
 
     void Update()
     {
+        /*
         RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction, maxDistance, layerMask);
 
         //なにかと衝突した時だけそのオブジェクトの名前をログに出す
@@ -19,5 +20,6 @@ public class Enemy_System : MonoBehaviour
         {
             Debug.Log(hit.collider.gameObject.name);
         }
+        */
     }
 }
