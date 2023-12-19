@@ -17,7 +17,7 @@ public class Door : MonoBehaviour
     {
         if (trigger)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 StartCoroutine(Warp());
             }
