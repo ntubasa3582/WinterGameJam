@@ -9,14 +9,14 @@ public class InGameController : MonoBehaviour
     public static InGameController Instance => _instance;
     public event Action PauseAction { add => _pauseAction += value; remove => _pauseAction -= value; }
     public event Action ResumeAction { add => _resumeAction += value; remove => _resumeAction -= value; }
-    public bool IsPause { get; set; } = false;
+    public bool IsPause { get; private set; } = false;
     public bool IsGameClear { get; set; } = false;
     public bool IsGameOver { get; set; } = false;
-    public bool IsPlayerWakeUp { get; private set; } = false;
+    public bool IsPlayerWakeUp { get; private set; } = true;
 
     [SerializeField] private KeyCode _switchKey = KeyCode.None;
     [SerializeField] private Image _panel = null;
-    [SerializeField] private float _switchInterval = 3.0f;
+    [SerializeField] private float _switchDuration = 3.0f;
     [SerializeField] private UnityEvent _GameClearEvent = null;
     [SerializeField] private UnityEvent _GameOverEvent = null;
 
@@ -32,30 +32,35 @@ public class InGameController : MonoBehaviour
 
     private void Update()
     {
-
+        SwitchPlayerWakeUp();
         GameFinish();
     }
 
-    private void PlayerWakeUp()
+    private void SwitchPlayerWakeUp()
     {
         if (Input.GetKeyDown(_switchKey))
         {
+            ResetInterval();
             IsPlayerWakeUp = true;
+            UnityEngine.Debug.Log("Wake Up");
         }
 
-        if (IsPlayerWakeUp)
+        if (IsPlayerWakeUp && IsSpendInterval(_switchDuration, Time.deltaTime))
         {
-            
+            IsPlayerWakeUp = false;
         }
     }
 
-    //private float _timer = 0.0f;
-    //private bool IsSpendInterval(float interval, float addTime, bool isStop = false)
-    //{
-    //    _timer += addTime;
+    private float _timer = 0.0f;
+    private bool IsSpendInterval(float interval, float addTime)
+    {
+        _timer += addTime;
 
-    //    if(_timer > interval) 
-    //}
+        if (_timer > interval) { _timer = 0.0f; return true; }
+        return false;
+    }
+
+    private void ResetInterval() => _timer = 0.0f;
 
     private void GameFinish()
     {
@@ -63,7 +68,7 @@ public class InGameController : MonoBehaviour
         {
             _GameClearEvent?.Invoke();
         }
-        else if(!IsGameClear && IsGameOver)
+        else if (!IsGameClear && IsGameOver)
         {
             _GameOverEvent?.Invoke();
         }
