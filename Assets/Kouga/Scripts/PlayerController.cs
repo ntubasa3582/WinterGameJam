@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer _sprite = default;
     float _h;
     [SerializeField] float _damageTimer = 0;
+    ScoreManager _scoreManager;
 
     void Start()
     {
