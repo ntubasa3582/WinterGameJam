@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 510706163}
   - component: {fileID: 510706162}
   - component: {fileID: 510706161}
+  - component: {fileID: 510706165}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -401,6 +402,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &510706165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510706160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd708d7f7c184e4a907f09f7a3ec579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current_score: 0
+  Ranking:
+  - 43
+  - 5
+  - 64
+  - 34
+  - 62
+  Ran1: {fileID: 0}
+  Ran2: {fileID: 0}
+  Ran3: {fileID: 0}
+  Ran4: {fileID: 0}
+  Ran5: {fileID: 0}
 --- !u!1 &660067769
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,10 +839,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd708d7f7c184e4a907f09f7a3ec579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  values:
-  - 0
-  - 0
-  - 0
+  current_score: 0
+  Ranking: []
+  Ran1: {fileID: 0}
+  Ran2: {fileID: 0}
+  Ran3: {fileID: 0}
+  Ran4: {fileID: 0}
+  Ran5: {fileID: 0}
 --- !u!4 &1686625471
 Transform:
   m_ObjectHideFlags: 0
