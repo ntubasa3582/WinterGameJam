@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class Door2 : MonoBehaviour
 {
+    /// <summary>ƒhƒAŠJ‚©‚È‚¢Žž‚Ì‰¹</summary>
+    [SerializeField] AudioSource _doorSound;
     bool trigger = false;
     [SerializeField] Transform Gate1;
     [SerializeField] Transform Gate2;
-    [SerializeField] Transform Player;
     void Start()
     {
-
+        _doorSound = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (trigger)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                StartCoroutine(Warp());
+                _doorSound.Play();
             }
         }
     }
@@ -35,10 +36,5 @@ public class Door2 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             trigger = false;
-    }
-    IEnumerator Warp()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Player.transform.position = Gate1.position;
     }
 }

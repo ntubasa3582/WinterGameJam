@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Higuti/Script/TextAnim.cs.meta
+guid: 88ae25d59c28f6841a22211acfe4dcb7
+========
 guid: 8875cd05514b29d4998277ae6dbb336f
+>>>>>>>> 0770026e088251041e77e56b42ee4820d727d62c:Assets/Higuti/Script/SceneTransition.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
