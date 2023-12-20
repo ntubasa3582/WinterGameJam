@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer _sprite = default;
     float _h;
     [SerializeField] float _damageTimer = 0;
+    [SerializeField] AudioSource _JumpSE;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = _jumpPower;
             GameObject _jumpEffect = Instantiate(_effect);
             _jumpEffect.transform.position = this.transform.position;
+            _JumpSE.Play();
         }
         else if (!Input.GetButton("Jump") && velocity.y > 0)
         {
@@ -97,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag != "Ground")
+        if(collision.gameObject.tag == "Ground")
         _isGrounded = false;
     }
     private void LateUpdate()
