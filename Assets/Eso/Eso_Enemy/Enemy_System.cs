@@ -7,6 +7,7 @@ using UnityEngine;
 public class Enemy_System : MonoBehaviour
 {
     public SpriteRenderer sp;
+    public Animator anime;
 
     public GameObject lightpos;
     public GameObject leftpos;
@@ -14,32 +15,37 @@ public class Enemy_System : MonoBehaviour
     public float length = 1;//ray‚Ì’·‚³
     public float speed = 1;
     public bool myDirections = true;
+    public bool isdeath = false;
 
     void FixedUpdate()
     {
-        Ray2D lightray = new Ray2D (lightpos.transform.position, Vector2.down);
-        RaycastHit2D lighthit = Physics2D.Raycast((Vector2)lightray.origin, (Vector2)lightray.direction, length);
-        if (!lighthit.collider && myDirections)
-        {
-            myDirections = false;
-            Debug.Log("‰½‚à‚È‚¢");
-        }
-        Ray2D leftray = new Ray2D(leftpos.transform.position, Vector2.down);
-        RaycastHit2D lefthit = Physics2D.Raycast((Vector2)leftray.origin, (Vector2)leftray.direction, length);
-        if (!lefthit.collider && !myDirections)
-        {
-            myDirections = true;
-            Debug.Log("‰½‚à‚È‚¢");
-        }
-        if (myDirections)
+        if (myDirections && !isdeath)
         {
             transform.Translate(0.02f * speed, 0, 0);
             sp.flipX = true;
+            Ray2D lightray = new Ray2D(lightpos.transform.position, Vector2.down);
+            RaycastHit2D lighthit = Physics2D.Raycast((Vector2)lightray.origin, (Vector2)lightray.direction, length);
+            if (!lighthit.collider) myDirections = false;
         }
-        if (!myDirections)
+        if (!myDirections && !isdeath)
         {
             transform.Translate(-0.02f * speed, 0, 0);
             sp.flipX = false;
+            Ray2D leftray = new Ray2D(leftpos.transform.position, Vector2.down);
+            RaycastHit2D lefthit = Physics2D.Raycast((Vector2)leftray.origin, (Vector2)leftray.direction, length);
+            if (!lefthit.collider) myDirections = true;
         }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            anime.SetBool("death", true);
+            isdeath = true;
+        }
+    }
+    public void Enemy_Destroy()
+    {
+        Destroy(gameObject);
     }
 }
