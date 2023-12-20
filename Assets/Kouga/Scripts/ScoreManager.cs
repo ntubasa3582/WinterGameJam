@@ -12,16 +12,16 @@ public class ScoreManager : MonoBehaviour
     {
         _scoreText.text = "SCORE : " + _addScore.ToString();
     }
-    //public void AddScore_MiniCoin()
-    //{
-    //    _addScore += 100;
-    //    _scoreText.text = "SCORE : " + _addScore.ToString();
-    //}
-    //public void AddScore_BigCoin() 
-    //{
-    //    _addScore += 500;
-    //    _scoreText.text = "SCORE : " + _addScore.ToString();
-    //}
+    public void AddScore_MiniCoin()
+    {
+        _addScore += 100;
+        _scoreText.text = "SCORE : " + _addScore.ToString();
+    }
+    public void AddScore_BigCoin()
+    {
+        _addScore += 500;
+        _scoreText.text = "SCORE : " + _addScore.ToString();
+    }
     public void ResetScore()
     {
         _addScore = 0;
