@@ -11,7 +11,6 @@ public class Door2 : MonoBehaviour
     [SerializeField] Transform Gate2;
     void Start()
     {
-        _CloseSound = GetComponent<AudioSource>();
     }
 
     void Update()
