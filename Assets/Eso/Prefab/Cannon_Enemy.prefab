@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotaudio: {fileID: 8715940194368476572}
+  clip: {fileID: 8300000, guid: 95aecaa888c0abb449c8fad1815715bb, type: 3}
   spriteRen: {fileID: 3156276337255773907}
   anime: {fileID: 4661787093735000172}
   lightpos: {fileID: 3903011491960773272}
@@ -513,7 +514,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -543,7 +544,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

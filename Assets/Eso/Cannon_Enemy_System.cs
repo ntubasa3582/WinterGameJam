@@ -7,6 +7,7 @@ using UnityEngine;
 public class Cannon_Enemy_System : MonoBehaviour
 {
     public AudioSource shotaudio;
+    public AudioClip clip;
 
     public SpriteRenderer spriteRen;
     public Animator anime;
@@ -102,7 +103,7 @@ public class Cannon_Enemy_System : MonoBehaviour
     }
     void BallShot(GameObject bullet,GameObject SP)
     {
-        shotaudio.Play();
+        shotaudio.PlayOneShot(clip);
         GameObject shotObj = Instantiate(bullet, SP.transform.position, Quaternion.identity);
         Rigidbody2D rb = shotObj.GetComponent<Rigidbody2D>();
         SpriteRenderer sr = rb.GetComponent<SpriteRenderer>();
