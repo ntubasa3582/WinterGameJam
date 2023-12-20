@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Enemy_System : MonoBehaviour
 {
-
+    public AudioSource deatha;
     public SpriteRenderer sp;
     public Animator anime;
 
@@ -45,6 +45,7 @@ public class Enemy_System : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            deatha.Play();
             anime.SetBool("death", true);
             isdeath = true;
         }
