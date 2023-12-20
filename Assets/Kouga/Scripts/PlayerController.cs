@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if((collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Gimmick") && !_isDamaged)
+        if(collision.gameObject.tag == "Enemy" && !_isDamaged)
         {
             _isDamaged = true;
             _moveSpeed = 0;
@@ -80,16 +80,22 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground")
         {
-        _isGrounded = true;
+            _isGrounded = true;
         }
         if (collision.gameObject.tag == "Enemy")
         {
             _rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
         }
+        if(collision.gameObject.tag == "Gimmick" && !_isDamaged)
+        {
+            _isDamaged = true;
+            _moveSpeed = 0;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        if(collision.gameObject.tag != "Ground")
         _isGrounded = false;
     }
     private void LateUpdate()
