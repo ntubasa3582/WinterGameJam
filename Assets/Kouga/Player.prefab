@@ -212,6 +212,7 @@ MonoBehaviour:
   _jumpPower: 8
   _dashSpeed: 2
   _gravityDrag: 0.99
+  _effect: {fileID: 6303975239981172965, guid: 48806bbf7f80e2a478846e17edbb5eb8, type: 3}
   _damageTimer: 0
 --- !u!95 &6542575820494901170
 Animator:

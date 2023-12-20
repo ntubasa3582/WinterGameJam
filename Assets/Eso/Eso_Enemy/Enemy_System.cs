@@ -25,7 +25,9 @@ public class Enemy_System : MonoBehaviour
             sp.flipX = true;
             Ray2D lightray = new Ray2D(lightpos.transform.position, Vector2.down);
             RaycastHit2D lighthit = Physics2D.Raycast((Vector2)lightray.origin, (Vector2)lightray.direction, length);
-            if (!lighthit.collider) myDirections = false;
+
+            if(!lighthit.collider) myDirections = false;
+            else if(!lighthit.collider.gameObject.CompareTag("Ground") && !lighthit.collider.gameObject.CompareTag("Gimmick")) myDirections = false;
         }
         if (!myDirections && !isdeath)
         {
@@ -33,7 +35,9 @@ public class Enemy_System : MonoBehaviour
             sp.flipX = false;
             Ray2D leftray = new Ray2D(leftpos.transform.position, Vector2.down);
             RaycastHit2D lefthit = Physics2D.Raycast((Vector2)leftray.origin, (Vector2)leftray.direction, length);
+
             if (!lefthit.collider) myDirections = true;
+            else if(!lefthit.collider.gameObject.CompareTag("Ground") && !lefthit.collider.gameObject.CompareTag("Gimmick")) myDirections = true;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class Ranking_System2 : MonoBehaviour
 {
     public float current_score;
     List<float> _rankingNum = new List<float>();
-    [SerializeField] Text[] _rankingText;
+    [SerializeField] TextMeshProUGUI[] _rankingText;
     private void Awake()
     {
     }
