@@ -12,7 +12,6 @@ public class GoalScript : MonoBehaviour
     float fadeDuration = 1.0f;
     void Start()
     {
-        _as = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,7 +27,7 @@ public class GoalScript : MonoBehaviour
     }
     IEnumerator Fadeout()
     {
-       // _as.Play();
+        _as.Play();
         float timer = 0;
         while (timer < fadeDuration)
         {
