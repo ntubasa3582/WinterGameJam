@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Gimmick
+  - Ground
+  - MiniCoin
+  - BigCoin
   layers:
   - Default
   - TransparentFX

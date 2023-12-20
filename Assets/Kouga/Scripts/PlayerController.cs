@@ -42,11 +42,16 @@ public class PlayerController : MonoBehaviour
         if(_isDamaged)
         {
             _damageTimer += Time.deltaTime;
-            if(_damageTimer > 5)
+            if (_damageTimer > 5)
             {
                 _isDamaged = false;
                 _damageTimer = 0;
             }
+            else if(_damageTimer > 2)
+            {
+                _moveSpeed = 20.0f;
+            }
+
         }
 
         _rb.velocity = velocity;
@@ -68,15 +73,18 @@ public class PlayerController : MonoBehaviour
         if((collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Gimmick") && !_isDamaged)
         {
             _isDamaged = true;
+            _moveSpeed = 0;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        _isGrounded = true;
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Ground")
         {
-            Destroy(collision.gameObject);
-
+        _isGrounded = true;
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            _rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
         }
     }
 
