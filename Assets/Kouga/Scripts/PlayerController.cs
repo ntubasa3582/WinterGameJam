@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = _jumpPower;
             GameObject _jumpEffect = Instantiate(_effect);
             _jumpEffect.transform.position = this.transform.position;
-            _JumpSE.Play();
+            //_JumpSE.Play();
         }
         else if (!Input.GetButton("Jump") && velocity.y > 0)
         {
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag != "Ground")
         _isGrounded = false;
     }
     private void LateUpdate()
