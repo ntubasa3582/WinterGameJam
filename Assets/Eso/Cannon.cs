@@ -29,21 +29,18 @@ public class Cannon : MonoBehaviour
         GameObject shotObj = Instantiate(bullet, SHOT_POSITION.transform.position, Quaternion.identity);
         Rigidbody2D rb = shotObj.GetComponent<Rigidbody2D>();
         SpriteRenderer sr = rb.GetComponent<SpriteRenderer>();
-        /*
-        Random.Range(0,3);
-        switch
+        int i =Random.Range(0,3);
+        switch(i){
             case 1:
-                sr.color = Color.white;
-                break; 
+                sr.sprite = bullet1;
+                break;
             case 2:
-                sr.color = Color.white;
+                sr.sprite = bullet2;
                 break;
             case 3:
-                sr.color = Color.white;
+                sr.sprite = bullet3;
                 break;
-        )
-        */
-        sr.sprite = bullet1;
+        }
         rb.velocity = this.transform.right * bullespeed;
         shotObj.transform.eulerAngles = this.transform.eulerAngles + new Vector3(0, 0, 0);
     }
