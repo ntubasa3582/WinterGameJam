@@ -48,13 +48,14 @@ public class PlayerController : MonoBehaviour
         }
         if(_isDamaged)
         {
+            _damageTimer += Time.deltaTime;
             if (_damageTimer > 5)
             {
                 
                 _isDamaged = false;
                 _damageTimer = 0;
             }
-            else if(_damageTimer > 2)
+            else if(_damageTimer > 1)
             {
                 _moveSpeed = 20.0f;
             }
