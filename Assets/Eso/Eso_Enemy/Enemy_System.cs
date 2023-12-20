@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Enemy_System : MonoBehaviour
 {
+
     public SpriteRenderer sp;
     public Animator anime;
 
