@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
+    public AudioSource shotaudio;
     [SerializeField] public GameObject SHOT_POSITION;
     [SerializeField] public GameObject bullet;
     [SerializeField] Sprite bullet1 = null;
@@ -26,6 +27,7 @@ public class Cannon : MonoBehaviour
     }
     void BallShot(float speed, GameObject bullet)
     {
+        shotaudio.Play();
         GameObject shotObj = Instantiate(bullet, SHOT_POSITION.transform.position, Quaternion.identity);
         Rigidbody2D rb = shotObj.GetComponent<Rigidbody2D>();
         SpriteRenderer sr = rb.GetComponent<SpriteRenderer>();
