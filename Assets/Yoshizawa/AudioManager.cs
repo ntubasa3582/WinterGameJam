@@ -56,4 +56,16 @@ public enum PlayClips
 {
     TitleBGM,
     InGameBGM,
+    GameStartSE,
+    GameClearSE,
+    GameOverSE,
+    MomDashSE,
+    MomKnockSE,
+    MomDoorOpenSE,
+    PhaseDreamSE,
+    JumpSE,
+    DamageSE,
+    EnemyDeathSE,
+    CoinSE,
+    LessTimeSE,
 }
