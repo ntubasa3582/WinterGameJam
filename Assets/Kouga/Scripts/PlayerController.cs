@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer _sprite = default;
     float _h;
     [SerializeField] float _damageTimer = 0;
-    [SerializeField] AudioSource _JumpSE;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip _JumpSE;
+    [SerializeField] AudioClip _DamageSE;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         Vector2 velocity = _rb.velocity;
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
+            audioSource.PlayOneShot(_JumpSE);
             _isGrounded = false;
             velocity.y = _jumpPower;
             GameObject _jumpEffect = Instantiate(_effect);
@@ -45,9 +48,9 @@ public class PlayerController : MonoBehaviour
         }
         if(_isDamaged)
         {
-            _damageTimer += Time.deltaTime;
             if (_damageTimer > 5)
             {
+                
                 _isDamaged = false;
                 _damageTimer = 0;
             }
@@ -76,6 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy" && !_isDamaged)
         {
+            audioSource.PlayOneShot(_DamageSE);
             _isDamaged = true;
             _moveSpeed = 0;
         }
@@ -92,6 +96,7 @@ public class PlayerController : MonoBehaviour
         }
         if(collision.gameObject.tag == "Gimmick" && !_isDamaged)
         {
+            audioSource.PlayOneShot(_DamageSE);
             _isDamaged = true;
             _moveSpeed = 0;
         }
