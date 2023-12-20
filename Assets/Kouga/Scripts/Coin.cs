@@ -12,7 +12,7 @@ public class Coin : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            _scoreManager.AddScore(_myScore);
+             _scoreManager.AddScore(_myScore);
         }
         //if (collision.gameObject.tag == "Player" && this.gameObject.tag == "BigCoin")
         //{
