@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class InGameController : MonoBehaviour
     public bool IsPause { get; private set; } = false;
     public bool IsGameClear { get; set; } = false;
     public bool IsGameOver { get; set; } = false;
-    public bool IsPlayerWakeUp { get; private set; } = true;
+    public bool IsPlayerWakeUp { get; private set; } = false;
 
     [SerializeField] private KeyCode _switchKey = KeyCode.None;
     [SerializeField] private Image _panel = null;
@@ -30,9 +31,19 @@ public class InGameController : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void Update()
+    private void Start()
     {
-        SwitchPlayerWakeUp();
+        StartCoroutine(UpdateAsync());
+    }
+
+    private IEnumerator UpdateAsync()
+    {
+        while (!IsGameClear && !IsGameOver)
+        {
+            SwitchPlayerWakeUp();
+            if (TimeCounter.Instance.RemainingTime == 0) IsGameOver = true;
+            yield return null;
+        }
         GameFinish();
     }
 
@@ -42,7 +53,6 @@ public class InGameController : MonoBehaviour
         {
             ResetInterval();
             IsPlayerWakeUp = true;
-            UnityEngine.Debug.Log("Wake Up");
         }
 
         if (IsPlayerWakeUp && IsSpendInterval(_switchDuration, Time.deltaTime))
