@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class toGameScene : MonoBehaviour
 {
-    [SerializeField] AudioSource _pushSound;
+    [SerializeField] AudioSource _bgm;
     [SerializeField] Image fadeImage;
     public float fadeDuration = 1.0f;
     void Start()
@@ -23,7 +23,7 @@ public class toGameScene : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        _pushSound.Play();
+        _bgm.Stop();
         SceneManager.LoadScene("");
         fadeImage.enabled = false;
     }
