@@ -7,7 +7,8 @@ using UnityEngine;
 public class Cannon_Enemy_System : MonoBehaviour
 {
     public AudioSource shotaudio;
-    public AudioClip clip;
+    public AudioClip clip1;
+    public AudioClip clip2;
 
     public SpriteRenderer spriteRen;
     public Animator anime;
@@ -93,6 +94,7 @@ public class Cannon_Enemy_System : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            shotaudio.PlayOneShot(clip2);
             anime.SetBool("death", true);
             isdeath = true;
         }
@@ -103,7 +105,7 @@ public class Cannon_Enemy_System : MonoBehaviour
     }
     void BallShot(GameObject bullet,GameObject SP)
     {
-        shotaudio.PlayOneShot(clip);
+        shotaudio.PlayOneShot(clip1);
         GameObject shotObj = Instantiate(bullet, SP.transform.position, Quaternion.identity);
         Rigidbody2D rb = shotObj.GetComponent<Rigidbody2D>();
         SpriteRenderer sr = rb.GetComponent<SpriteRenderer>();

@@ -296,7 +296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotaudio: {fileID: 8715940194368476572}
-  clip: {fileID: 8300000, guid: 95aecaa888c0abb449c8fad1815715bb, type: 3}
+  clip1: {fileID: 8300000, guid: 95aecaa888c0abb449c8fad1815715bb, type: 3}
+  clip2: {fileID: 8300000, guid: 5a103af06f35b6345953a99e35b68719, type: 3}
   spriteRen: {fileID: 3156276337255773907}
   anime: {fileID: 4661787093735000172}
   lightpos: {fileID: 3903011491960773272}
@@ -468,8 +469,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 95aecaa888c0abb449c8fad1815715bb, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
