@@ -82,10 +82,10 @@ public class PlayerController : MonoBehaviour
         {
         _isGrounded = true;
         }
-        //if(collision.gameObject.tag == "Enemy")
-        //{
-        //    Destroy(collision.gameObject);
-        //}
+        if (collision.gameObject.tag == "Enemy")
+        {
+            _rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
