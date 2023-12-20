@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _jumpPower = 3.0f;
     [SerializeField] float _dashSpeed = 2.0f;
     [SerializeField] float _gravityDrag = .99f;
+    [SerializeField] GameObject _effect;
     Rigidbody2D _rb = default;
     bool _isGrounded = false;
     bool _isDamaged = false;
@@ -16,7 +17,6 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer _sprite = default;
     float _h;
     [SerializeField] float _damageTimer = 0;
-    ScoreManager _scoreManager;
 
     void Start()
     {
@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
         {
             _isGrounded = false;
             velocity.y = _jumpPower;
+            GameObject _jumpEffect = Instantiate(_effect);
+            _jumpEffect.transform.position = this.transform.position;
         }
         else if (!Input.GetButton("Jump") && velocity.y > 0)
         {
