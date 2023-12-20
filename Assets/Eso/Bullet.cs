@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private float num;
     public float max = 5;
+
     void FixedUpdate()
     {
         num += 0.02f;
