@@ -3,32 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Plane : MonoBehaviour
 {
-    public int spownTime = 1;
+    public float spownTime = 1;
     [SerializeField] GameObject _block;
-    float num = 0;
-
+    float num = 1;
+    bool spown = false;
     void Start()
     {
         _block.SetActive(false);
+        StartCoroutine(Call());
     }
 
     void Update()
     {
 
     }
+    IEnumerator Call()
+    {
+        yield return new WaitForSeconds(spownTime);
+        spown = true;
+    }
     private void FixedUpdate()
     {
-
-        num += 0.02f;
-        if (_block.activeInHierarchy && num >= spownTime)
+        if (spown)
         {
-            _block.SetActive(false);
-            num = 0;
-        }
-        if (!_block.activeInHierarchy && num >= spownTime)
-        {
-            _block.SetActive(true);
-            num = 0;
+            num += 0.02f;
+            if (_block.activeInHierarchy && num >= 3)
+            {
+                _block.SetActive(false);
+                num = 0;
+            }
+            if (!_block.activeInHierarchy && num >= 3)
+            {
+                _block.SetActive(true);
+                num = 0;
+            }
         }
     }
 }

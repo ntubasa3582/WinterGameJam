@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     [SerializeField] Transform Gate1;
     [SerializeField] Transform Gate2;
     [SerializeField] Transform Player;
+    [SerializeField] AudioSource _dooropen;
     void Start()
     {
 
@@ -19,6 +20,7 @@ public class Door : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
+                _dooropen.Play();
                 StartCoroutine(Warp());
             }
         }

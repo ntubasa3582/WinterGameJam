@@ -5,13 +5,13 @@ using UnityEngine;
 public class Door2 : MonoBehaviour
 {
     /// <summary>ƒhƒAŠJ‚©‚È‚¢Žž‚Ì‰¹</summary>
-    [SerializeField] AudioSource _doorSound;
+    [SerializeField] AudioSource _CloseSound;
     bool trigger = false;
     [SerializeField] Transform Gate1;
     [SerializeField] Transform Gate2;
     void Start()
     {
-        _doorSound = GetComponent<AudioSource>();
+        _CloseSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -20,7 +20,7 @@ public class Door2 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                _doorSound.Play();
+                _CloseSound.Play();
             }
         }
     }

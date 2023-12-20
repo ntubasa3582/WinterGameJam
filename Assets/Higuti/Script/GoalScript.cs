@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GoalScript : MonoBehaviour
 {
+    /// <summary>ÉSÅ[ÉãÇµÇΩéûÇÃâπ </summary>
     [SerializeField] AudioSource _as;
     [SerializeField] Image fadeImage;
     float fadeDuration = 1.0f;
@@ -27,7 +28,7 @@ public class GoalScript : MonoBehaviour
     }
     IEnumerator Fadeout()
     {
-        //_as.Play();
+       // _as.Play();
         float timer = 0;
         while (timer < fadeDuration)
         {
