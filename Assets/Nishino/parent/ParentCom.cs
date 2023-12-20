@@ -13,6 +13,9 @@ public class ParentCom : MonoBehaviour
     [SerializeField, Header("パーティクルの生成座標")] Vector2 _particlePos = new Vector2(0, 0);
     [SerializeField, Header("パーティクルが生成される時間")] float _ParticleStart = 0;
     GameObject par;
+    [SerializeField] public AudioSource _audioSource;
+    [SerializeField] AudioClip[] _clip1;
+
     float _time = 0;
     /// <summary>falseが来てないtrueが来た</summary>
     bool _iscomeMother = false;//falseが来てないtrueが来た
@@ -41,11 +44,13 @@ public class ParentCom : MonoBehaviour
                 _iscomeMother = true;
                 Debug.Log("来た");
                 Destroy(par);
+                _audioSource.PlayOneShot(_clip1[1]);
                 _motherDoors[1].SetActive(true);
                 if (InGameController.Instance.IsPlayerWakeUp == false )
                 {
                     InGameController.Instance.IsGameOver = true;
                     Debug.Log("起きてない");
+                    StartCoroutine("Bgm");
                 }
                 else if (InGameController.Instance.IsPlayerWakeUp == true)
                 {
@@ -70,6 +75,8 @@ public class ParentCom : MonoBehaviour
         {
             if (_intance == true)
             {
+                _audioSource.PlayOneShot(_clip1[0]);
+                Debug.Log("来るぞ");
                 par = Instantiate(_particleSystem, _particlePos, Quaternion.identity);
                 _intance = false;
             }
@@ -84,5 +91,11 @@ public class ParentCom : MonoBehaviour
         Debug.Log("コルーチン終了");
         _randomNum = 0;
         NumRandom();
+    }
+
+    IEnumerator Bgm()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _audioSource.PlayOneShot(_clip1[2]);
     }
 }
