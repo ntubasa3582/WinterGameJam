@@ -44,7 +44,6 @@ public class ParentCom : MonoBehaviour
                 _iscomeMother = true;
                 Debug.Log("—ˆ‚½");
                 Destroy(par);
-                _audioSource.PlayOneShot(_clip1[1]);
                 _motherDoors[1].SetActive(true);
                 if (InGameController.Instance.IsPlayerWakeUp == false )
                 {
@@ -75,7 +74,6 @@ public class ParentCom : MonoBehaviour
         {
             if (_intance == true)
             {
-                _audioSource.PlayOneShot(_clip1[0]);
                 Debug.Log("—ˆ‚é‚¼");
                 par = Instantiate(_particleSystem, _particlePos, Quaternion.identity);
                 _intance = false;
@@ -96,6 +94,5 @@ public class ParentCom : MonoBehaviour
     IEnumerator Bgm()
     {
         yield return new WaitForSeconds(1.5f);
-        _audioSource.PlayOneShot(_clip1[2]);
     }
 }
