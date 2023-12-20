@@ -51,9 +51,12 @@ MonoBehaviour:
   - {fileID: 0}
   _particleSystem: {fileID: 460226570745293322, guid: 173341bca8f03154483d8189cf37e6e9, type: 3}
   _particlePos: {x: 0, y: 0}
-  _ParticleStart: 0
-  _audioSource: {fileID: 0}
-  _clip1: []
+  _ParticleStart: 2
+  _audioSource: {fileID: 351746293676389594}
+  _clip1:
+  - {fileID: 8300000, guid: e0d1ff68aacfeb246872b890865737a6, type: 3}
+  - {fileID: 8300000, guid: b0cfa3da17a5fee4b91f8e2bd346fe29, type: 3}
+  - {fileID: 8300000, guid: 73281a42c2138224fa69cce518164f8e, type: 3}
   _opneInterval: 4
 --- !u!82 &351746293676389594
 AudioSource:
