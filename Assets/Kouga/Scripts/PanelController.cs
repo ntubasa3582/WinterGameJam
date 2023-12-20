@@ -6,34 +6,38 @@ public class PanelController : MonoBehaviour
 {
     [SerializeField] GameObject _upperPanel;
     [SerializeField] GameObject _lowerPanel;
-    SpriteRenderer _upperRenderer;
-    SpriteRenderer _lowerRenderer;
-    float _timer;
-    int _clickCount = 0;
+    [SerializeField] float _timer;
+    [SerializeField] int _clickCount = 0;
 
     private void Start()
     {
-        _upperRenderer = _upperPanel.GetComponent<SpriteRenderer>();
-        _lowerRenderer = _lowerPanel.GetComponent<SpriteRenderer>();
-        _upperRenderer.color = new Color(0, 0, 0, 0);
-        _lowerRenderer.color = new Color(0, 0, 0, 255);
+        _upperPanel.SetActive(false);
+        _lowerPanel.SetActive(true);
     }
     private void Update()
     {
+        _timer += Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("leftclick");
             _clickCount++;
-            _timer += Time.deltaTime;
+            _timer = 0;
+            if(_clickCount >= 7 && _timer <= 2)
+            {
+                _upperPanel.SetActive(true);
+                _lowerPanel.SetActive(false);
+                _timer = 0;
+            }
         }
-        _timer = 0;
-    }
-    void FirstStep()
-    {
-        _upperRenderer.color = new Color(0, 0, 0, 64);
-        _lowerRenderer.color = new Color(0, 0, 0, 128);
-    }
-    void SecondStep()
-    {
-
+        else if(_clickCount <= 7 && _timer >= 2)
+        {
+            _clickCount = 0;
+            _upperPanel.SetActive(false);
+            _lowerPanel.SetActive(true);
+        }
+        if (_timer >= 2)
+        {
+            _clickCount = 0;
+        }
     }
 }

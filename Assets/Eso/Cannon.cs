@@ -41,6 +41,7 @@ public class Cannon : MonoBehaviour
                 sr.sprite = bullet3;
                 break;
         }
+
         rb.velocity = this.transform.right * bullespeed;
         shotObj.transform.eulerAngles = this.transform.eulerAngles + new Vector3(0, 0, 0);
     }
